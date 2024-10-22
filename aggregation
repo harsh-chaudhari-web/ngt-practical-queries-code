@@ -1,0 +1,94 @@
+1. sum - Sum of Values
+Calculate the total age of all documents in a collection.
+
+db.myCollection.aggregate([
+  { 
+    $group: { 
+      _id: null, 
+      totalAge: { $sum: "$age" } 
+    } 
+  }
+]);
+2. avg - Average of Values
+Calculate the average age of all documents.
+
+db.myCollection.aggregate([
+  { 
+    $group: { 
+      _id: null, 
+      averageAge: { $avg: "$age" } 
+    } 
+  }
+]);
+3. min - Minimum Value
+Find the minimum age in the collection.
+
+db.myCollection.aggregate([
+  { 
+    $group: { 
+      _id: null, 
+      minAge: { $min: "$age" } 
+    } 
+  }
+]);
+4. max - Maximum Value
+Find the maximum age in the collection.
+
+db.myCollection.aggregate([
+  { 
+    $group: { 
+      _id: null, 
+      maxAge: { $max: "$age" } 
+    } 
+  }
+]);
+5. push - Collect Values in an Array
+Collect all names into an array (duplicates are allowed).
+
+db.myCollection.aggregate([
+  { 
+    $group: { 
+      _id: "$city", 
+      allNames: { $push: "$name" } 
+    } 
+  }
+]);
+6. addToSet - Collect Unique Values in an Array
+Collect unique names into an array (no duplicates).
+
+db.myCollection.aggregate([
+  { 
+    $group: { 
+      _id: "$city", 
+      uniqueNames: { $addToSet: "$name" } 
+    } 
+  }
+]);
+7. first - First Value in a Sorted List
+Get the first age when documents are sorted by age (ascending).
+
+db.myCollection.aggregate([
+  { 
+    $sort: { age: 1 } 
+  },
+  { 
+    $group: { 
+      _id: null, 
+      firstAge: { $first: "$age" } 
+    } 
+  }
+]);
+8. last - Last Value in a Sorted List
+Get the last age when documents are sorted by age (ascending).
+
+db.myCollection.aggregate([
+  { 
+    $sort: { age: 1 } 
+  },
+  { 
+    $group: { 
+      _id: null, 
+      lastAge: { $last: "$age" } 
+    } 
+  }
+]);
