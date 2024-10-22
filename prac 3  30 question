@@ -1,0 +1,63 @@
+Below are the corrected MongoDB queries based on the questions provided. Each query is followed by a single-line comment explaining its purpose.
+
+### 1. Display all documents in the collection `restaurant`.
+```javascript
+db.rest.find(); // Display all documents in the restaurant collection.
+```
+
+### 2. Display the fields `restaurant_id`, `name`, `borough`, and `cuisine`.
+```javascript
+db.rest.find({}, {"restaurant_id": 1, "name": 1, "borough": 1, "cuisine": 1}); // Show restaurant_id, name, borough, and cuisine fields for all documents.
+```
+
+### 3. Display the fields `restaurant_id`, `name`, `borough`, and `cuisine`, excluding `_id`.
+```javascript
+db.rest.find({}, {"restaurant_id": 1, "name": 1, "borough": 1, "cuisine": 1, "_id": 0}); // Show restaurant_id, name, borough, and cuisine, excluding _id field.
+```
+
+### 4. Display `restaurant_id`, `name`, `borough`, and `zip code`, excluding `_id`.
+```javascript
+db.rest.find({}, {"restaurant_id": 1, "name": 1, "borough": 1, "address.zipcode": 1, "_id": 0}); // Show restaurant_id, name, borough, and zip code, excluding _id field.
+```
+
+### 5. Display all restaurants in the `Bronx` borough.
+```javascript
+db.rest.find({"borough": "Bronx"}); // Display all restaurants located in the Bronx borough.
+```
+
+### 6. Display the first 5 restaurants in the `Bronx`.
+```javascript
+db.rest.find({"borough": "Bronx"}).limit(5); // Display the first 5 restaurants located in the Bronx borough.
+```
+
+### 7. Display the next 5 restaurants after skipping the first 5 in `Bronx`.
+```javascript
+db.rest.find({"borough": "Bronx"}).skip(5).limit(5); // Skip the first 5 restaurants and display the next 5 in the Bronx borough.
+```
+
+### 8. Find restaurants with a score greater than 90.
+```javascript
+db.rest.find({"grades": { $elemMatch: {"score": { $gt: 90 }}}}); // Find restaurants with at least one score greater than 90.
+```
+
+### 9. Find restaurants with a score more than 80 but less than 100.
+```javascript
+db.rest.find({"grades.score": { $gt: 80, $lt: 100 }}); // Find restaurants with scores between 80 and 100.
+```
+
+### 10. Find restaurants with a latitude value less than -95.754168.
+```javascript
+db.rest.find({"address.coord": { $lt: -95.754168 }}); // Find restaurants with a latitude value less than -95.754168.
+```
+
+### 11. Find restaurants that do not prepare `American` cuisine, have a score greater than 70, and latitude less than -65.754168.
+```javascript
+db.rest.find({ 
+  $and: [
+    { "cuisine": { $ne: "American" } }, 
+    { "grades.score": { $gt: 70 } }, 
+    { "address.coord": { $lt: -65.754168 } }
+  ]
+}); // Find restaurants not serving American cuisine, with scores above 70, and latitude less than -65.754168.
+
+db.rest.find().sort({"name}:1); //for sorting in asc if desc then change to -1
