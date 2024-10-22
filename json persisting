@@ -1,0 +1,31 @@
+<html>
+
+<head>
+
+<title>json persisting</title>
+
+<script src="jquery.js"> </script>
+
+<script>
+
+$(document).ready(function()
+
+{ text1 = '{name: "pradnya", age: 33, city:"vasai"}';
+
+//storing data localStorage.setItem("testJSON", text1);
+
+// Retrieving data textfrompersistingjson = localStorage.getItem("testJSON"); $("#p2").text(textfrompersistingjson); });
+
+</script>
+
+</head>
+
+<body>
+
+<p id="p1"></p>
+
+<p id="p2"></p>
+
+</body>
+
+</html>
