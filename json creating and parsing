@@ -1,0 +1,41 @@
+<html>
+
+<head>
+
+<title>json parsing and stringify</title>
+
+<script src="jquery.js"> </script>
+
+<script>
+
+$(document).ready(function()
+
+{
+
+var text='{"name":"abc","age":20,"city":"vasai"}'
+
+var obj=JSON.parse(text);
+
+$("#p1").text("key is age and value is "+obj.age);
+
+var textfromstrigify=JSON.stringify(obj); $("#p2").text("text converted from stringify method is "+textfromstrigify);
+
+$("#p3").text("name is "+obj.name+"\nage is"+obj.age);
+
+});
+
+</script>
+
+</head>
+
+<body>
+
+<p id="p1"></p>
+
+<p id="p2"></p>
+
+<p id="p3"></p>
+
+</body>
+
+</html>
