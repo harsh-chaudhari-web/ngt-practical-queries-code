@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>JQuery</title>
+
+<script src="jquery.js"></script>
+
+<script>
+
+$(document).ready(function(){
+
+$("#b1").click(function(){
+
+$("#p1").append("<b>appendtext</b>");});
+
+$("#b2").click(function(){
+
+$("ol").append("<li>appendedlist</li>");});
+
+$("#b3").click(function(){
+
+$("#p2").prepend("<b>prependedtext</b>");});
+
+$("#b4").click(function(){
+
+$("ol").prepend("<li>prependedlist</li>");});
+
+$("#b5").click(function(){
+
+$("#p3").before("<b>beforetext</b>");});
+
+$("#b6").click(function(){
+
+$("#p3").after("<b>aftertext</b>");});
+
+});
+
+</script>
+
+</head>
+
+<body>
+
+<button id="b1">Append to</button>
+
+<button id="b2">Append list</button>
+
+<button id="b3">Prepend to</button>
+
+<button id="b4">Prepend list</button>
+
+<button id="b5">Insert Before</button>
+
+<button id="b6">Insert After</button>
+
+<p id="p1"><b>Paragraph 1</b></p>
+
+<p id="p2"><b>Paragraph 2</b></p>
+
+<p id="p3"><b>Paragraph 3</b></p>
+
+<ol>
+
+<li>List 1</li>
+
+<li>List 2</li>
+
+<li>List 3</li>
+
+<li>List 4</li>
+
+</ol>
+
+</body>
+
+</html>
