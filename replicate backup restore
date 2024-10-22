@@ -1,0 +1,59 @@
+Here’s a consolidated and organized list of MongoDB commands and explanations for replication, backup, and restore, including primary and secondary roles in a replica set.
+
+### **MongoDB Replica Set Commands**
+
+#### **1. Start MongoDB Instances for Replica Set**
+**Primary Node:**
+```bash
+mongod --replSet "rs0" --dbpath /path/to/primary/data --port 27017 --bind_ip localhost; // Start the primary node of the replica set.
+```
+
+**Secondary Node:**
+```bash
+mongod --replSet "rs0" --dbpath /path/to/secondary/data --port 27018 --bind_ip localhost; // Start the secondary node of the replica set.
+```
+
+#### **2. Initiate the Replica Set**
+Open the MongoDB shell and run:
+```javascript
+rs.initiate(); // Initiate the replica set after starting the primary node.
+```
+
+#### **3. Add Secondary Node to the Replica Set**
+In the MongoDB shell:
+```javascript
+rs.add("localhost:27018"); // Add the secondary node to the replica set.
+```
+
+#### **4. Check Replica Set Status**
+To view the status of your replica set:
+```javascript
+rs.status(); // Display the status of the replica set, including primary and secondary nodes.
+```
+
+#### **5. Force a Primary Election**
+If you want to force a new primary to be elected:
+```javascript
+rs.stepDown(); // Step down the current primary to force a re-election.
+```
+
+### **MongoDB Backup and Restore Commands**
+
+#### **6. Create a Backup of Existing Database**
+```bash
+mongodump --db myDatabase --out /path/to/backup; // Backup the specified database to the given path.
+```
+*Replace `myDatabase` with the name of your database and `/path/to/backup` with your desired backup location.*
+
+#### **7. Restore Database from the Backup**
+```bash
+mongorestore /path/to/backup/myDatabase; // Restore the specified database from the backup directory.
+```
+*Replace `/path/to/backup/myDatabase` with the path where your backup files are stored.*
+
+### **Notes**
+- The primary node handles all write operations and replicates data to secondary nodes.
+- Secondary nodes maintain copies of the primary's data and can serve read requests.
+- In a replica set, there can only be one primary at a time, while multiple secondary nodes can exist.
+
+Feel free to copy and paste these commands for your reference during your exam! Let me know if you need any further assistance!
